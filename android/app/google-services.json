@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "492522120849",
+    "project_id": "decision-app-6c5b4",
+    "storage_bucket": "decision-app-6c5b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492522120849:android:c3a0ba081ab075e2c50130",
+        "android_client_info": {
+          "package_name": "com.example.descison_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFKFMXm4PmWxxvkUuKxRwso6pc-BVB_mM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
