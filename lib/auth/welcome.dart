@@ -1,3 +1,4 @@
+import 'package:descison_app/Utlis/colors.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -12,9 +13,9 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+      backgroundColor: AppColors().primary,
       ),
-      body:Center(
+      body:const Center(
         child: Text("Welcome Page"),
       ) ,
     );
