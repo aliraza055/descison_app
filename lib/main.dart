@@ -1,4 +1,6 @@
 import 'package:descison_app/Utlis/colors.dart';
+import 'package:descison_app/auth/welcome.dart';
+import 'package:descison_app/pages/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +30,9 @@ class _MyAppState extends State<MyApp> {
         stream: FirebaseAuth.instance.authStateChanges(),
          builder:(context,snapshot) {
           if(snapshot.hasData){
-            return HomePage();
+            return const HomePage();
           }else{
-            return WelcomePage();
+            return const WelcomePage();
           }
          }),
     );
