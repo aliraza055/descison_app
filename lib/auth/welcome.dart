@@ -23,14 +23,17 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      // backgroundColor: AppColors().primary,
-      // ),
       body: Container(
-        color: AppColors().primary,
+        decoration:const BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Color(0xFFB2EBF2), Color(0xFFE0F7FA)], 
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    ),
+  ),
         child:const Center(child: Text("Decision App",
         style: TextStyle(
-          fontSize: 30,fontWeight: FontWeight.w700,color: Colors.white70
+          fontSize: 30,fontWeight: FontWeight.w700
           ),)),
       ) ,
     );
