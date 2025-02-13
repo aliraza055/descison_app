@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:descison_app/Utlis/colors.dart';
+import 'package:descison_app/auth/login.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -10,13 +13,25 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   @override
+  void initState() {
+    Timer(const Duration(seconds: 5), (){
+       Navigator.pushReplacement(context, 
+       MaterialPageRoute(builder: (context)=>const LoginPage()));
+    });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      backgroundColor: AppColors().primary,
-      ),
-      body:const Center(
-        child: Text("Welcome Page"),
+      // appBar: AppBar(
+      // backgroundColor: AppColors().primary,
+      // ),
+      body: Container(
+        color: AppColors().primary,
+        child:const Center(child: Text("Decision App",
+        style: TextStyle(
+          fontSize: 30,fontWeight: FontWeight.w700,color: Colors.white70
+          ),)),
       ) ,
     );
   }
