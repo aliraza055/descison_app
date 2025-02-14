@@ -12,7 +12,7 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
-    Timer(const Duration(seconds: 5), (){
+    Timer(const Duration(seconds: 2), (){
        Navigator.pushReplacement(context, 
        MaterialPageRoute(builder: (context)=>const Singup()));
     });
