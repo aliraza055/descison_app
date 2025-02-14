@@ -1,3 +1,4 @@
+import 'package:descison_app/auth/login.dart';
 import 'package:flutter/material.dart';
 
 class Singup extends StatefulWidget {
@@ -22,7 +23,6 @@ class _SingupState extends State<Singup> {
       ),
       body: Container(
         padding:const EdgeInsets.all(16),
-        //color: Colors.black87,
         child: Form(
           key: _keyform,
           child: Column(
@@ -113,7 +113,20 @@ class _SingupState extends State<Singup> {
                     ),
                   ),
                 ),
-              ),  
+              ), 
+             const SizedBox(
+                height: 20,
+              ) ,
+              Center(
+                child: Row(
+                  children: [
+                 const   Text("If you have already account?"),
+                    TextButton(onPressed: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (_)=>const LoginPage()));
+                    }, child:const Text('Login'))
+                  ],
+                ),
+              )
             ],
           ),
         ),

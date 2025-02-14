@@ -114,6 +114,19 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),  
+                const SizedBox(
+                height: 20,
+              ) ,
+              Center(
+                child: Row(
+                  children: [
+                 const   Text("If you have already account?"),
+                    TextButton(onPressed: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (_)=>const LoginPage()));
+                    }, child:const Text('Login'))
+                  ],
+                ),
+              )
             ],
           ),
         ),
