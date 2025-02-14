@@ -31,6 +31,37 @@ class _LoginPageState extends State<LoginPage> {
                 height: 150,
               ),
               TextFormField(
+                validator: (value) {
+                  if(value!.isEmpty){
+                    return 'Enter your name';
+                  }else{
+                    return null;
+                  } 
+                },
+                onSaved: (value){
+                  gmail=value!;
+                },
+                decoration: InputDecoration(
+                  hintText: "Enter your name",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8)
+                  )
+                ),
+              ),
+            const  SizedBox(
+                height: 20,
+              ),
+                TextFormField(
+                validator: (value) {
+                  if(value!.isEmpty){
+                    return 'Enter your gmail';
+                  }else{
+                    return null;
+                  } 
+                },
+                onSaved: (value){
+                  name=value!;
+                },
                 decoration: InputDecoration(
                   hintText: "Enter Gmail",
                   border: OutlineInputBorder(
@@ -41,14 +72,29 @@ class _LoginPageState extends State<LoginPage> {
             const  SizedBox(
                 height: 20,
               ),
-              TextFormField(
+                TextFormField(
+                validator: (value) {
+                  if(value!.isEmpty){
+                    return 'Enter your passward';
+                  }else{
+                    return null;
+                  } 
+                },
+                onSaved: (value){
+                  password=value!;
+                },
                 decoration: InputDecoration(
-                  hintText: "Enter Password",
+                  hintText: "Enter password",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8)
                   )
                 ),
-              )
+              ),
+            const  SizedBox(
+                height: 20,
+              ),
+              
+              
             ],
           ),
         ),
