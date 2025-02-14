@@ -16,7 +16,7 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     Timer(const Duration(seconds: 5), (){
        Navigator.pushReplacement(context, 
-       MaterialPageRoute(builder: (context)=>const LoginPage()));
+       MaterialPageRoute(builder: (context)=>const sing()));
     });
     super.initState();
   }
