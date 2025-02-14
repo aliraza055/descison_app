@@ -17,12 +17,12 @@ class _LoginPageState extends State<LoginPage> {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title:const Text("login page"),
+        title:const Text("Sinup page"),
         centerTitle: true,
       ),
       body: Container(
         padding:const EdgeInsets.all(16),
-        color: Colors.black87,
+        //color: Colors.black87,
         child: Form(
           key: _keyform,
           child: Column(
@@ -93,6 +93,28 @@ class _LoginPageState extends State<LoginPage> {
             const  SizedBox(
                 height: 20,
               ),
+              InkWell(
+                onTap: () {
+                  if(_keyform.currentState!.validate()){
+
+                  }
+                },
+                child: Container(
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    gradient:const LinearGradient(
+                      colors: [Colors.limeAccent,Colors.green]),
+                    borderRadius: BorderRadius.circular(8)
+                  ),
+                  child:const Center(
+                    child: Text(
+                      'Sinup',style: TextStyle(fontSize: 26,color: Colors.white70,fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+              
               
               
             ],
