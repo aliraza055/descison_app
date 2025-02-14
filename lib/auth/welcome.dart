@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:descison_app/Utlis/colors.dart';
 import 'package:descison_app/auth/login.dart';
+import 'package:descison_app/auth/sinup.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -16,7 +17,7 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     Timer(const Duration(seconds: 5), (){
        Navigator.pushReplacement(context, 
-       MaterialPageRoute(builder: (context)=>const sing()));
+       MaterialPageRoute(builder: (context)=>const Singup()));
     });
     super.initState();
   }
