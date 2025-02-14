@@ -20,31 +20,38 @@ class _LoginPageState extends State<LoginPage> {
         title:const Text("login page"),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-        const  SizedBox(
-            height: 150,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: "Enter Gmail",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8)
+      body: Container(
+        padding:const EdgeInsets.all(16),
+        color: Colors.black87,
+        child: Form(
+          key: _keyform,
+          child: Column(
+            children: [
+            const  SizedBox(
+                height: 150,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: "Enter Gmail",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8)
+                  )
+                ),
+              ),
+            const  SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: "Enter Password",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8)
+                  )
+                ),
               )
-            ),
+            ],
           ),
-        const  SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: "Enter Password",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8)
-              )
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
