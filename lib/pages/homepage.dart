@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
 
       ),
-      body: Center(
+      body:const Center(
         child: Text("HOme page"),
       ),
     );

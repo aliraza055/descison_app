@@ -1,133 +1,136 @@
 import 'package:descison_app/auth/login.dart';
 import 'package:flutter/material.dart';
 
-class Singup extends StatefulWidget {
-  const Singup({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<Singup> createState() => _SingupState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _SingupState extends State<Singup> {
-  final _keyform=GlobalKey<FormState>();
-  var gmail='';
-  var password='';
-  var name='';
+class _SignupState extends State<Signup> {
+  final _keyform = GlobalKey<FormState>();
+  bool _isPasswordVisible = false;
+  String email = '';
+  String password = '';
+  String name = '';
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        title:const Text("Sinup page"),
+        backgroundColor: Colors.green,
+        title: const Text("Signup Page"),
         centerTitle: true,
       ),
-      body: Container(
-        padding:const EdgeInsets.all(16),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _keyform,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            const  SizedBox(
-                height: 150,
-              ),
+              // Name Field
               TextFormField(
                 validator: (value) {
-                  if(value!.isEmpty){
-                    return 'Enter your name';
-                  }else{
-                    return null;
-                  } 
+                  if (value!.isEmpty) return 'Enter your name';
+                  return null;
                 },
-                onSaved: (value){
-                  gmail=value!;
-                },
+                onSaved: (value) => name = value!,
                 decoration: InputDecoration(
                   hintText: "Enter your name",
+                  prefixIcon: const Icon(Icons.person),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8)
-                  )
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
-            const  SizedBox(
-                height: 20,
-              ),
-                TextFormField(
+              const SizedBox(height: 20),
+
+              // Email Field
+              TextFormField(
                 validator: (value) {
-                  if(value!.isEmpty){
-                    return 'Enter your gmail';
-                  }else{
-                    return null;
-                  } 
+                  if (value!.isEmpty) return 'Enter your email';
+                  return null;
                 },
-                onSaved: (value){
-                  name=value!;
-                },
+                onSaved: (value) => email = value!,
                 decoration: InputDecoration(
-                  hintText: "Enter Gmail",
+                  hintText: "Enter email",
+                  prefixIcon: const Icon(Icons.email),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8)
-                  )
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
-            const  SizedBox(
-                height: 20,
-              ),
-                TextFormField(
+              const SizedBox(height: 20),
+
+              // Password Field
+              TextFormField(
+                obscureText: !_isPasswordVisible,
                 validator: (value) {
-                  if(value!.isEmpty){
-                    return 'Enter your passward';
-                  }else{
-                    return null;
-                  } 
+                  if (value!.isEmpty) return 'Enter your password';
+                  if (value.length < 6) return 'Password must be at least 6 characters';
+                  return null;
                 },
-                onSaved: (value){
-                  password=value!;
-                },
+                onSaved: (value) => password = value!,
                 decoration: InputDecoration(
                   hintText: "Enter password",
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: IconButton(
+                    icon: Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8)
-                  )
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
-            const  SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 30),
+
+              // Signup Button
               InkWell(
                 onTap: () {
-                  if(_keyform.currentState!.validate()){
-
+                  if (_keyform.currentState!.validate()) {
+                    _keyform.currentState!.save();
+                    // Perform signup logic
                   }
                 },
                 child: Container(
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    gradient:const LinearGradient(
-                      colors: [Colors.limeAccent,Colors.green]),
-                    borderRadius: BorderRadius.circular(8)
+                    gradient: const LinearGradient(
+                      colors: [Colors.blue, Colors.green],
+                    ),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child:const Center(
+                  child: const Center(
                     child: Text(
-                      'Sing up',style: TextStyle(fontSize: 26,color: Colors.white70,fontWeight: FontWeight.w600),
+                      'Sign Up',
+                      style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
-              ), 
-             const SizedBox(
-                height: 20,
-              ) ,
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                 const   Text("If you have already account?"),
-                    TextButton(onPressed: (){
-                      Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>const LoginPage()));
-                    }, child:const Text('sign in'))
-                  ],
-                ),
-              )
+              ),
+              const SizedBox(height: 20),
+
+              // Navigate to Login
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Already have an account?"),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginPage()));
+                    },
+                    child: const Text('Sign In'),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

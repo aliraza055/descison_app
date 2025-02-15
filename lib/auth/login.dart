@@ -1,3 +1,4 @@
+import 'package:descison_app/Utlis/colors.dart';
 import 'package:descison_app/auth/sinup.dart';
 import 'package:flutter/material.dart';
 
@@ -9,115 +10,177 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _keyform=GlobalKey<FormState>();
-  var gmail='';
-  var password='';
-  var name='';
+  final _formKey = GlobalKey<FormState>();
+  var email = '';
+  var password = '';
+  bool _isPasswordVisible = false; 
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.red,
-      //   title:const Text("Sing page"),
-      //   centerTitle: true,
-      // ),
-      backgroundColor: Colors.grey,
-      body: Container(
-        padding:const EdgeInsets.all(16),
-        color: Colors.black87,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.grey[900],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
-          key: _keyform,
+          key: _formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            const  SizedBox(
-                height: 150,
-              ),
-            const  Text('Sign In.',
-              style: TextStyle(
-                fontSize: 40,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
+              const Text(
+                'Sign In',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                  const  SizedBox(
-                height: 20,
+                textAlign: TextAlign.center,
               ),
-                TextFormField(
+              const SizedBox(height: 30),
+
+              // Email Field
+              TextFormField(
                 validator: (value) {
-                  if(value!.isEmpty){
-                    return 'Enter your gmail';
-                  }else{
-                    return null;
-                  } 
+                  if (value!.isEmpty) {
+                    return 'Enter your email';
+                  }
+                  return null;
                 },
-                onSaved: (value){
-                  name=value!;
+                keyboardType: TextInputType.emailAddress,
+                onSaved: (value) {
+                  email = value!;
                 },
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  hintText: "Enter Gmail",
-                  hintStyle:const TextStyle(color: Colors.white),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  )
+                  hintText: 'Enter your email',
+                  hintStyle: const TextStyle(color: Colors.white70),
+                  prefixIcon: const Icon(Icons.email, color: Colors.white70),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                  ),
                 ),
               ),
-            const  SizedBox(
-                height: 20,
-              ),
-                TextFormField(
+
+              const SizedBox(height: 20),
+
+              // Password Field
+              TextFormField(
                 validator: (value) {
-                  if(value!.isEmpty){
-                    return 'Enter your passward';
-                  }else{
-                    return null;
-                  } 
+                  if (value!.isEmpty) {
+                    return 'Enter your password';
+                  }
+                  return null;
                 },
-                onSaved: (value){
-                  password=value!;
+                obscureText: !_isPasswordVisible, // Toggle visibility
+                onSaved: (value) {
+                  password = value!;
                 },
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  hintText: "Enter password",
-                  hintStyle:const TextStyle(color: Colors.white),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8)
-                  )
+                  hintText: 'Enter your password',
+                  hintStyle: const TextStyle(color: Colors.white70),
+                  prefixIcon: const Icon(Icons.lock, color: Colors.white70),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: Colors.white70,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                  ),
                 ),
               ),
-            const  SizedBox(
-                height: 20,
-              ),
+
+              const SizedBox(height: 30),
+
+              // Sign In Button
               InkWell(
                 onTap: () {
-                  if(_keyform.currentState!.validate()){
-
+                  if (_formKey.currentState!.validate()) {
+                    // Perform sign-in action
                   }
                 },
                 child: Container(
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    gradient:const LinearGradient(
-                      colors: [Colors.limeAccent,Colors.green]),
-                    borderRadius: BorderRadius.circular(8)
+                    color: AppColors().primary,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 5,
+                        spreadRadius: 1,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
                   ),
-                  child:const Center(
+                  child: const Center(
                     child: Text(
-                      'Sign in',style: TextStyle(fontSize: 26,color: Colors.white70,fontWeight: FontWeight.w600),
+                      'Sign In',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
-              ),  
-                const SizedBox(
-                height: 20,
-              ) ,
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                 const   Text("If you have not account!",style: TextStyle(color:Colors.white),),
-                    TextButton(onPressed: (){
-                      Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>const Singup()));
-                    }, child:const Text('signup'))
-                  ],
-                ),
-              )
+              ),
+
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Signup()),
+                      );
+                    },
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: Color(0xFF008080),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),
