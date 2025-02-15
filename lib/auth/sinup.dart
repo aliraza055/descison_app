@@ -1,4 +1,5 @@
 import 'package:descison_app/auth/login.dart';
+import 'package:descison_app/services/authication.dart';
 import 'package:flutter/material.dart';
 
 class Signup extends StatefulWidget {
@@ -155,7 +156,7 @@ class _SignupState extends State<Signup> {
               InkWell(
                 onTap: () {
                   if (_keyform.currentState!.validate()) {
-                    // Perform sign-in action
+                    Authicatin().SingUp(email, password);
                   }
                 },
                 child: Container(
