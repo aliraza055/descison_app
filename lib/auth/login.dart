@@ -1,3 +1,4 @@
+import 'package:descison_app/auth/sinup.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,14 +16,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title:const Text("Sinup page"),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.red,
+      //   title:const Text("Sing page"),
+      //   centerTitle: true,
+      // ),
+      backgroundColor: Colors.grey,
       body: Container(
         padding:const EdgeInsets.all(16),
-        //color: Colors.black87,
+        color: Colors.black87,
         child: Form(
           key: _keyform,
           child: Column(
@@ -30,25 +32,11 @@ class _LoginPageState extends State<LoginPage> {
             const  SizedBox(
                 height: 150,
               ),
-              TextFormField(
-                validator: (value) {
-                  if(value!.isEmpty){
-                    return 'Enter your name';
-                  }else{
-                    return null;
-                  } 
-                },
-                onSaved: (value){
-                  gmail=value!;
-                },
-                decoration: InputDecoration(
-                  hintText: "Enter your name",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8)
-                  )
+            const  Text('Sign In.',
+              style: TextStyle(
+                fontSize: 40,color: Colors.white,fontWeight: FontWeight.bold),textAlign: TextAlign.center,
                 ),
-              ),
-            const  SizedBox(
+                  const  SizedBox(
                 height: 20,
               ),
                 TextFormField(
@@ -64,8 +52,9 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 decoration: InputDecoration(
                   hintText: "Enter Gmail",
+                  hintStyle:const TextStyle(color: Colors.white),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8)
+                    borderRadius: BorderRadius.circular(8),
                   )
                 ),
               ),
@@ -85,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 decoration: InputDecoration(
                   hintText: "Enter password",
+                  hintStyle:const TextStyle(color: Colors.white),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8)
                   )
@@ -109,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child:const Center(
                     child: Text(
-                      'Sinup',style: TextStyle(fontSize: 26,color: Colors.white70,fontWeight: FontWeight.w600),
+                      'Sign in',style: TextStyle(fontSize: 26,color: Colors.white70,fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -119,11 +109,12 @@ class _LoginPageState extends State<LoginPage> {
               ) ,
               Center(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                 const   Text("If you have already account?"),
+                 const   Text("If you have not account!",style: TextStyle(color:Colors.white),),
                     TextButton(onPressed: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (_)=>const LoginPage()));
-                    }, child:const Text('Login'))
+                      Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>const Singup()));
+                    }, child:const Text('signup'))
                   ],
                 ),
               )

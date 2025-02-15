@@ -109,7 +109,7 @@ class _SingupState extends State<Singup> {
                   ),
                   child:const Center(
                     child: Text(
-                      'Sinup',style: TextStyle(fontSize: 26,color: Colors.white70,fontWeight: FontWeight.w600),
+                      'Sing up',style: TextStyle(fontSize: 26,color: Colors.white70,fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -119,11 +119,12 @@ class _SingupState extends State<Singup> {
               ) ,
               Center(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                  const   Text("If you have already account?"),
                     TextButton(onPressed: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (_)=>const LoginPage()));
-                    }, child:const Text('Login'))
+                      Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>const LoginPage()));
+                    }, child:const Text('sign in'))
                   ],
                 ),
               )
