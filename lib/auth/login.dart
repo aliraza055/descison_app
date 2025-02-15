@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.grey[900],
+     backgroundColor: Colors.grey[900],
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
@@ -131,16 +131,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: AppColors().primary,
+                        gradient: const LinearGradient(
+                      colors: [Colors.blue, Colors.green],
+                    ),
                     borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 5,
-                        spreadRadius: 1,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
                   ),
                   child: const Center(
                     child: Text(
@@ -173,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: const Text(
                       'Sign Up',
                       style: TextStyle(
-                        color: Color(0xFF008080),
+                        color: Colors.lightGreen,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
