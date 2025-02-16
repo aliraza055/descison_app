@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:descison_app/auth/sinup.dart';
+import 'package:descison_app/auth/login.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -14,7 +14,7 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     Timer(const Duration(seconds: 2), (){
        Navigator.pushReplacement(context, 
-       MaterialPageRoute(builder: (context)=>const Signup()));
+       MaterialPageRoute(builder: (context)=>const LoginPage()));
     });
     super.initState();
   }

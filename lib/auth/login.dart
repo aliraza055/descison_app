@@ -1,4 +1,5 @@
 import 'package:descison_app/auth/sinup.dart';
+import 'package:descison_app/pages/homepage.dart';
 import 'package:descison_app/services/authication.dart';
 import 'package:flutter/material.dart';
 
@@ -126,6 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     Authentication().singIn(email, password);
+               Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>const HomePage()));
                   }
                 },
                 child: Container(

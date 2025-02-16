@@ -5,14 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
-
 }
 
-class MyApp extends StatefulWidget  {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
@@ -20,23 +19,31 @@ class MyApp extends StatefulWidget  {
 }
 
 class _MyAppState extends State<MyApp> {
+  Future<User?> getUser() async {
+    return FirebaseAuth.instance.currentUser;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: AppColors().primary
-      ),
-      home: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-         builder:(context,snapshot) {
-          if(snapshot.hasData){
-            return const WelcomePage();
-          }else{
+      theme: ThemeData(primaryColor: AppColors().primary),
+      home: FutureBuilder<User?>(
+        future: getUser(),
+        builder: (context, snapshot) {
+          // Prevents using context if widget is unmounted
+          if (!mounted) return const SizedBox();  
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Scaffold(body: Center(child: CircularProgressIndicator()));
+          } else if (snapshot.hasData) {
+            return const HomePage();
+          } else {
             return const WelcomePage();
           }
-         }),
+        },
+      ),
     );
   }
 }
