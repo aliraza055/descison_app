@@ -156,7 +156,8 @@ class _SignupState extends State<Signup> {
               InkWell(
                 onTap: () {
                   if (_keyform.currentState!.validate()) {
-                    Authicatin().SingUp(email, password);
+                        _keyform.currentState!.save(); // Ensure values are saved
+                    Authentication().signUp(context,email, password,name);
                   }
                 },
                 child: Container(

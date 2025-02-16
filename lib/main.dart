@@ -9,6 +9,7 @@ void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatefulWidget  {
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         stream: FirebaseAuth.instance.authStateChanges(),
          builder:(context,snapshot) {
           if(snapshot.hasData){
-            return const HomePage();
+            return const WelcomePage();
           }else{
             return const WelcomePage();
           }

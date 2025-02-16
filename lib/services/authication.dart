@@ -1,19 +1,35 @@
+import 'dart:math';
+
 import 'package:descison_app/Utlis/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-class Authicatin{
-   void SingUp(String email,String password)async{
-   await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: email, password: password
-      ).then((data){
-        ToastError().toast("you have successfully created account");
-      }).onError((error,stackTrace){
-     if(error=='weak-password'){
-      ToastError().toast("The password provide is too weak!");
-     }else if(error== 'email-already-in-use'){
-     ToastError().toast("The account already exist!");
-     }else{
-           ToastError().toast("$error");
-     }
-      });
+import 'package:flutter/material.dart';
+
+class Authentication {
+  Future<void> signUp(BuildContext context, String email, String password, String? username) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null && username != null) {
+        await user.updateDisplayName(username);
+      }
+
+      ToastError().toast("You have successfully created an account");
+     // Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        ToastError().toast("The password provided is too weak!");
+      } else if (e.code == 'email-already-in-use') {
+        ToastError().toast("The account already exists!");
+      } else {
+        ToastError().toast("Error: ${e.message}");
+        print('${e.message}');
+      }
+    } catch (e) {
+      ToastError().toast("An unexpected error occurred: $e");
+    }
   }
 }

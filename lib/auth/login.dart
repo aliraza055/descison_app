@@ -1,4 +1,3 @@
-import 'package:descison_app/Utlis/colors.dart';
 import 'package:descison_app/auth/sinup.dart';
 import 'package:flutter/material.dart';
 
