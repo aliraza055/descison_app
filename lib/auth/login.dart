@@ -1,4 +1,5 @@
 import 'package:descison_app/auth/sinup.dart';
+import 'package:descison_app/services/authication.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -123,7 +124,8 @@ class _LoginPageState extends State<LoginPage> {
               InkWell(
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
-                    // Perform sign-in action
+                    _formKey.currentState!.save();
+                    Authentication().singIn(email, password);
                   }
                 },
                 child: Container(
