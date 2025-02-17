@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Scaffold(body: Center(child: CircularProgressIndicator()));
           } else if (snapshot.hasData) {
-            return const WelocomePage();
+            return const WelcomePage();
           } else {
             return const WelcomePage();
           }
