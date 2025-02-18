@@ -9,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int selectedIndex=0;
+  PageController pageController=PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +24,9 @@ class _HomePageState extends State<HomePage> {
         }, icon:const Icon(Icons.home))
        ],
       ),
-      body:const Center(
-        child: Text("HOme page"),
-      ),
+      body:PageView(
+        controller:pageController ,
+      )
     );
   }
 }
