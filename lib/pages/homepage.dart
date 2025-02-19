@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       title: Text('Decison app'),
+       title:const Text('Decison app'),
        backgroundColor: Colors.black,
        centerTitle: true,
        actions: [
@@ -35,5 +35,5 @@ class _HomePageState extends State<HomePage> {
       )
     );
   }
-  
+
 }
