@@ -1,3 +1,5 @@
+import 'package:descison_app/pages/addDecision.dart';
+import 'package:descison_app/pages/dashboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
        title: Text('Decison app'),
-       backgroundColor: Colors.blueAccent,
+       backgroundColor: Colors.black,
        centerTitle: true,
        actions: [
         IconButton(onPressed: ()async{
@@ -26,6 +28,10 @@ class _HomePageState extends State<HomePage> {
       ),
       body:PageView(
         controller:pageController ,
+        children: const [
+          DashBoard(),
+          AddDecision(),
+        ],
       )
     );
   }
