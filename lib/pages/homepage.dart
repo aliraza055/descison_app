@@ -1,3 +1,4 @@
+import 'package:descison_app/Utlis/colors.dart';
 import 'package:descison_app/pages/addDecision.dart';
 import 'package:descison_app/pages/dashboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,12 +14,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex=0;
   PageController pageController=PageController();
+  void ontapped(int index){
+    setState(() {
+      selectedIndex=index;
+    }
+    );
+    pageController.jumpToPage(index);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
        title:const Text('Decison app'),
-       backgroundColor: Colors.black,
+       backgroundColor:AppColors().primary,
        centerTitle: true,
        actions: [
         IconButton(onPressed: ()async{
@@ -32,7 +40,18 @@ class _HomePageState extends State<HomePage> {
           DashBoard(),
           AddDecision(),
         ],
-      )
+      ),
+      bottomNavigationBar: BottomNavigationBar(items: 
+      const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: 'dashboard'),
+        BottomNavigationBarItem(icon: Icon(Icons.add),label: 'add decision'),
+      ],
+      currentIndex:selectedIndex ,
+      selectedItemColor: AppColors().primary,
+      unselectedItemColor: Colors.blue,
+      backgroundColor: Colors.grey.shade50,
+      onTap: ontapped,
+      ),
     );
   }
 }
