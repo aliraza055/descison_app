@@ -31,7 +31,6 @@ class _MyAppState extends State<MyApp> {
       home: FutureBuilder<User?>(
         future: getUser(),
         builder: (context, snapshot) {
-          // Prevents using context if widget is unmounted
           if (!mounted) return const SizedBox();  
 
           if (snapshot.connectionState == ConnectionState.waiting) {
