@@ -19,7 +19,6 @@ class _MyAppState extends State<MyApp> {
   Future<User?> getUser() async {
     return FirebaseAuth.instance.currentUser;
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
