@@ -32,8 +32,7 @@ class _MyAppState extends State<MyApp> {
             return const Scaffold(body: Center(child: CircularProgressIndicator()));
           } else if (snapshot.hasData) {
             return const WelcomePage();
-          } else {
-            
+          } else {           
             return const WelcomePage();
           }
         },
