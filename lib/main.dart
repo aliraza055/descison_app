@@ -28,7 +28,6 @@ class _MyAppState extends State<MyApp> {
         future: getUser(),
         builder: (context, snapshot) {
           if (!mounted) return const SizedBox();  
-
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Scaffold(body: Center(child: CircularProgressIndicator()));
           } else if (snapshot.hasData) {
